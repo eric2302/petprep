@@ -592,6 +592,40 @@ Calculated confounds include the mean global signal, mean tissue class signal,
 tCompCor, aCompCor, Frame-wise Displacement, 6 motion parameters, DVARS, and
 spike regressors.
 
+Partial volume correction
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`~petprep.workflows.pet.pvc.init_pet_pvc_wf`
+
+.. workflow::
+    :graph2use: colored
+    :simple_form: yes
+
+    from importlib import resources
+    from petprep.workflows.pet.pvc import init_pet_pvc_wf
+
+    config_path = resources.files('petprep').joinpath('data', 'pvc', 'config.json')
+
+    wf = init_pet_pvc_wf(
+        name="pvc_wf",
+        tool="PETPVC",
+        method="GTM",
+        config_path=config_path,
+    )
+
+Partial volume correction (PVC) is a process that attempts to correct for the partial 
+volume effects that occur when a single voxel contains multiple tissue types. This is 
+particularly important in PET imaging, where the signal from different tissues (e.g., 
+gray matter, white matter, and cerebrospinal fluid) can overlap within a voxel, 
+leading to inaccurate quantification of tracer uptake.
+
+*PETprep* provides a PVC workflow using established libraries such as `PETPVC` or 
+`PETsurfer`. `PETPVC` provides methods such as ``GTM``, ``LABBE``, ``RL``, ``VC``, 
+``RBV``, ``LABBE+RBV``, ``RBV+VC``, ``RBV+RL``, ``LABBE+RBV+VC``, ``LABBE+RBV+RL``,
+``STC``, ``MTC``, ``LABBE+MTC``, ``MTC+VC``, ``MTC+RL``, ``LABBE+MTC+VC``,
+``LABBE+MTC+RL``, ``IY``, ``IY+VC``, ``IY+RL``, ``MG``, ``MG+VC`` and ``MG+RL``.
+`PETsurfer` provides ``GTM``, ``MG``, ``RBV`` and ``AGTM``.
+
 References
 ----------
 
