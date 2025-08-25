@@ -26,6 +26,11 @@ class ClipValuesOutputSpec(TraitedSpec):
 
 
 class ClipValues(BaseInterface):
+    """Remove negative values from a NIfTI image by clipping to 0.
+
+    Args:
+        BaseInterface: Base interface class for all Nipype interfaces.
+    """
     input_spec = ClipValuesInputSpec
     output_spec = ClipValuesOutputSpec
 
@@ -60,6 +65,12 @@ class Binarise4DSegmentationOutputSpec(TraitedSpec):
 
 
 class Binarise4DSegmentation(BaseInterface):
+    """Binarise a 4D anatomical segmentation image based on a dseg file segmentation.
+
+    Args:
+        BaseInterface: Base interface class for all Nipype interfaces
+
+    """
     input_spec = Binarise4DSegmentationInputSpec
     output_spec = Binarise4DSegmentationOutputSpec
 
@@ -99,6 +110,11 @@ class StackTissueProbabilityMapsOutputSpec(TraitedSpec):
 
 
 class StackTissueProbabilityMaps(BaseInterface):
+    """Stack multiple T1w tissue probability maps (GM, WM, CSF) into a single 4D NIfTI image.
+
+    Args:
+        BaseInterface: Base interface class for all Nipype interfaces.
+    """
     input_spec = StackTissueProbabilityMapsInputSpec
     output_spec = StackTissueProbabilityMapsOutputSpec
 
@@ -135,6 +151,12 @@ class CSVtoNiftiOutputSpec(TraitedSpec):
 
 
 class CSVtoNifti(BaseInterface):
+    """Convert a CSV file with region means to a NIfTI image using a reference segmentation.
+    
+    Args:
+        BaseInterface: Base interface class for all Nipype interfaces.
+    """
+    
     input_spec = CSVtoNiftiInputSpec
     output_spec = CSVtoNiftiOutputSpec
 
@@ -600,6 +622,13 @@ class GTMStatsTo4DNiftiOutputSpec(TraitedSpec):
 
 
 class GTMStatsTo4DNifti(BaseInterface):
+    """
+    Convert GTM statistics and segmentation into a 4D NIfTI image.
+
+    Args:
+        BaseInterface (_type_): _description_
+    """
+    
     input_spec = GTMStatsTo4DNiftiInputSpec
     output_spec = GTMStatsTo4DNiftiOutputSpec
 
